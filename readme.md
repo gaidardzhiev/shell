@@ -53,4 +53,8 @@ The implementation emphasizes clarity and simplicity, making it suitable for edu
 
 ---
 
+## License
 
+This project is provided under the GPL3 License.
+
+---

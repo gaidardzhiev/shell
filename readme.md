@@ -1,4 +1,4 @@
-# Simple Shell Interpreter (`shell.c`)
+# SHELL
 
 This is a minimalist shell interpreter written in C designed to execute `*nix` shell commands interactively or from scripts. It supports basic features such as variable expansion, command execution, conditional expressions with `[ ... ]`, command chaining (`&&`, `||`, `;`), built in commands (`cd`, `exit`, `export`), and simple input/output redirection.
 

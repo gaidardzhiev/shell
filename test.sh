@@ -1,14 +1,14 @@
-printf "testing conditionals with [ ... ]\n"
+printf "\ntesting conditionals with [ ... ]\n"
 [ 16 -gt 8 ] && echo "16 is greater than 8"
 [ 8 -gt 18 ] || echo "8 is not greater than 16"
 [ -f /etc/passwd ] && echo "/etc/passwd exists"
 [ -d /tmp ] && echo "/tmp is a directory"
 
-printf "testing chaining\n"
+printf "\ntesting chaining\n"
 false || echo "previous failed"
 true && echo "this runs after success"
 
-printf "testing variables\n"
+printf "\ntesting variables\n"
 export COUNT=15
 [ -n "$COUNT" ] && echo "COUNT is set"
 [ "$COUNT" -gt 10 ] && echo "COUNT is greater than 10"
@@ -16,7 +16,7 @@ export COUNT=15
 [ -z "$EMPTYVAR" ] && echo "EMPTYVAR is empty or not set"
 
 
-printf "testing redirection\n"
+printf "\ntesting redirection\n"
 echo hello > test.txt
-cat test.txt
-echo "end of test"
+cat test.txt && rm test.txt
+printf "\nend of test\n"

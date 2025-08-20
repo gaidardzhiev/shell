@@ -31,9 +31,7 @@ char **tkz(const char *ln, int *cnt) {
 	int i = 0;
 	int n = (int)strlen(ln);
 	int pos = 0;
-
 	while (pos < n) {
-		//skip leading spaces
 		while (pos < n && isspace((unsigned char)ln[pos]))
 			pos++;
 		if (pos >= n)
@@ -64,15 +62,12 @@ char **tkz(const char *ln, int *cnt) {
 				}
 			}
 		}
-
-		//only add non empty tokens
 		if (tl > 0) {
 			tk[tl] = '\0';
 			toks[i++] = tk;
 		} else {
 			free(tk);
 		}
-		//now add operator tokens if present
 		if (pos < n) {
 			if (ln[pos] == '>' || ln[pos] == '<' || ln[pos] == ';' ||
 			    ln[pos] == '|' || ln[pos] == '&' || ln[pos] == ']') {
@@ -94,7 +89,6 @@ char **tkz(const char *ln, int *cnt) {
 				}
 			}
 		}
-
 		if (i >= MAXARGS - 1)
 			break;
 	}
@@ -270,7 +264,7 @@ int eval_cond(int c, char **a) {
 		if (strcmp(av[1], "-le") == 0)
 			return (li <= ri) ? 0 : 1;
 	}
-	fprintf(stderr, "Unsupported condition\n");
+	fprintf(stderr, "unsupported condition\n");
 	return 1;
 }
 
@@ -313,11 +307,9 @@ int exec_cmd(char **a, int c) {
 		return 0;
 	if (bltin(a, c))
 		return 0;
-
 	int infd, outfd, app;
 	if (redir_parse(a, &c, &infd, &outfd, &app) < 0)
 		return 1;
-
 	pid_t pid = fork();
 	if (pid < 0) {
 		perror("fork");
@@ -354,7 +346,6 @@ int main(void) {
 	char *ln = NULL;
 	size_t cap = 0;
 	char cwd[PATH_MAX];
-
 	while (1) {
 		if (int_flag)
 			int_flag = 0;
@@ -375,7 +366,7 @@ int main(void) {
 		int cnt = 0;
 		char **tks = tkz(ln, &cnt);
 		if (!tks) {
-			fprintf(stderr, "Memory error\n");
+			fprintf(stderr, "memory error\n");
 			continue;
 		}
 		for (int i = 0; i < cnt; i++) {

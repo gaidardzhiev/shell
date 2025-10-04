@@ -1,10 +1,12 @@
-CC:=$(shell command -v musl-gcc 2>/dev/null || command -v gcc 2>/dev/null || command -v clang 2>/dev/null)
+#CC:=$(shell command -v musl-gcc 2>/dev/null || command -v gcc 2>/dev/null || command -v clang 2>/dev/null)
+CC=gcc
 BIN=shell
 
 all: $(BIN)
 
 $(BIN): %: %.c
-	$(CC) -o $@ $< -static
+	$(CC) -o $@ $<
+	#-static
 
 clean:
 	rm $(BIN)
